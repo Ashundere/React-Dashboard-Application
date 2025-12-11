@@ -1,6 +1,4 @@
 import type { TaskFilterProps } from "../../types";
-import { useState } from "react";
-import { TaskList } from "../TaskList/TaskList";
 
 
 
@@ -19,7 +17,7 @@ export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setS
         setSelectedPriority((prevPriority)=> event.target.value)
       };
     return(
-        <div>
+        <div className="filters">
             <div>
                 <label htmlFor="statusSelect">Filter by Status:</label>
                 <select

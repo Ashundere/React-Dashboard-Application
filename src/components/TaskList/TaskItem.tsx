@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+
 import { type Task, type TaskItemProps, type TaskStatus } from "../../types";
 
 
@@ -9,13 +9,13 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, tasks, setTasks, onStatusChan
   const getStatusClasses = (status: TaskStatus) => {
     switch (status) {
       case 'Completed':
-        return {backgroundColor: "green"};
+        return  "green";
       case 'In-progress':
-        return {backgroundColor: "gray"};
+        return "purple";
       case 'Pending':
-        return {backgroundColor: "yellow"};
+        return "gray";
       default:
-        return {backgroundColor: "gray"};
+        return "gray";
     }
   };
   const handleChange = (
@@ -29,15 +29,14 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, tasks, setTasks, onStatusChan
 
 
   return (
-    <div style={getStatusClasses(task.status)}>
+    <div style={{ backgroundColor: `${getStatusClasses(task.status)}`, color: `"White"`}} className={"task-items"}>
       <div>
         <div>
           <h3>{task.title}</h3>
           <p>{task.description}</p>
+          <h4>Due: {task.dueDate}</h4>
+          <h4>{task.priority}</h4>
         </div>
-        <span style={getStatusClasses(task.status)}>
-          {task.priority}
-        </span>
       </div>
       <div>
         <label htmlFor="status">Status:</label>
@@ -52,7 +51,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, tasks, setTasks, onStatusChan
           <option value="Completed">Completed</option>
         </select>
       </div>
-        <button onClick={() => onDelete(task.id)}>
+        <button onClick={() => onDelete(task.id)} className="deleteBtn">
           Delete
         </button>
       </div>

@@ -7,9 +7,9 @@ import TaskItem from "./TaskItem";
 export const TaskList: React.FC<TaskListProps> = ({tasks, setTasks, selectedStatus, selectedPriority, onStatusChange, onDelete}) => {
 
     return(
-        <div>
+        <div className="task-list">
             <h1>My Tasks</h1>
-            <div>
+            <div className="tasks">
                 {selectedStatus != "All" &&(
                     tasks.filter((task) => task.status === selectedStatus).map(task =>(
                 <TaskItem

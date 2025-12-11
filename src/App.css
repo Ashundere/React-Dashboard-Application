@@ -1,42 +1,61 @@
 #root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  gap: 200px;
+}
+
+.dashboard-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed; 
+  top: 0;          
+  left: 0;         
+  width: 100%; 
+}
+.form-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 20px;
+  width: 400px;
+  height: 400px;
+}
+
+.task-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 2;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.task-form{
+  grid-row-start: 1;
+  grid-column-start: 1;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-items{
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  height: 250px;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.deleteBtn{
+  background-color: lightgrey;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.dark-mode{
+  background-color: black;
+  color: white;
 }

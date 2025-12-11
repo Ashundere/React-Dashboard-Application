@@ -6,39 +6,21 @@ import TaskForm from './components/TaskForm/TaskForm'
 import type { Task, TaskStatus } from './types'
 import { TaskList } from './components/TaskList/TaskList'
 import { TaskFilter } from './components/TaskFilter/TaskFilter'
+import { Dashboard } from './components/Dashboard/Dashboard'
 
 
-const initialTasks: Task[] = [
-  {
-    id: "1",
-    title: "Task 1",
-    description: "Description for Task 1",
-    status: "in-progress" as TaskStatus,
-    priority: "Low",
-    dueDate: "1/1/2024",
-  },
-  {
-    id: "2",
-    title: "Task 2",
-    description: "Description for Task 2",
-    status: "completed" as TaskStatus,
-    priority: "Low",
-    dueDate: "1/1/2024",
-  },
-  {
-    id: "3",
-    title: "Task 3",
-    description: "Description for Task 3",
-    status: "pending" as TaskStatus,
-    priority: "Low",
-    dueDate: "1/1/2024",
-  },
-];
 
 
 function App() {
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [selectedPriority, setSelectedPriority] = useState<string>("All")
+
+  const [searchTerm, setSearchTerm] = useState<string>(" ")
+
+  const [darkMode, setDarkMode] = useState<boolean>(() =>{
+      const mode = localStorage.getItem('darkMode')
+      return mode ? JSON.parse(mode) : false
+  })
 
   const [tasks, setTasks] =useState<Task[]>(() =>{
       const savedTasks = localStorage.getItem('savedTasks')
@@ -56,6 +38,11 @@ function App() {
     useEffect(() => {
     console.log("UseEffectPriority:",selectedPriority)
   }, [selectedStatus])
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode))
+    darkMode? document.body.classList.add('dark-mode'): document.body.classList.remove('dark-mode')
+  }, [darkMode])
 
   const addTask =(newTask: Task) =>{
     setTasks((prevTasks) => [...prevTasks, newTask])
@@ -76,14 +63,17 @@ function App() {
   };
   return (
     <>
-      <TaskForm
-      addTask={addTask}/>
-      <TaskFilter
-      tasks= {tasks}
+    <div>
+      <Dashboard
+      darkMode={darkMode}
+      setDarkMode={setDarkMode}
+      tasks={tasks}
       selectedStatus={selectedStatus}
       setSelectedStatus={setSelectedStatus}
       selectedPriority={selectedPriority}
       setSelectedPriority={setSelectedPriority}/>
+      <TaskForm
+      addTask={addTask}/>
       <TaskList
       tasks={tasks}
       setTasks={setTasks}
@@ -92,6 +82,7 @@ function App() {
       onStatusChange={handleStatusChange}
       onDelete={handleDelete}
       />
+    </div>
     </>
   )
 }

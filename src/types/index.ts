@@ -26,6 +26,21 @@ export interface TaskFormProps {
   addTask: (newTask: Task) => void
 }
 
+export interface FormErrors {
+  title?: string;
+  description?: string;
+  dueDate?: string;
+}
+export interface DashboardProps {
+    darkMode: boolean;
+    setDarkMode: Dispatch<SetStateAction<boolean>>;
+    tasks: Task[];
+    selectedStatus: string;
+    setSelectedStatus: Dispatch<SetStateAction<string>>;
+    selectedPriority: string;
+    setSelectedPriority: Dispatch<SetStateAction<string>>;
+}
+
 export interface TaskFilterProps{
     tasks: Task[];
     selectedStatus: string;
