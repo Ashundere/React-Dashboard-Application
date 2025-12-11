@@ -2,7 +2,7 @@ import type { DashboardProps } from "../../types"
 import { TaskFilter } from "../TaskFilter/TaskFilter"
 
 
-export const Dashboard: React.FC<DashboardProps> = ({darkMode, setDarkMode, tasks, selectedStatus, setSelectedStatus, selectedPriority, setSelectedPriority}) => {
+export const Dashboard: React.FC<DashboardProps> = ({darkMode, setDarkMode, tasks, selectedStatus, setSelectedStatus, selectedPriority, setSelectedPriority, searchTerm, setSearchTerm}) => {
 
         const handleDarkMode =()=>{
             setDarkMode((prevMode) => prevMode? false : true)
@@ -17,7 +17,9 @@ export const Dashboard: React.FC<DashboardProps> = ({darkMode, setDarkMode, task
               selectedStatus={selectedStatus}
               setSelectedStatus={setSelectedStatus}
               selectedPriority={selectedPriority}
-              setSelectedPriority={setSelectedPriority}/>
+              setSelectedPriority={setSelectedPriority}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}/>
         </header>
         
     )

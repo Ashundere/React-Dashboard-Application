@@ -39,6 +39,8 @@ export interface DashboardProps {
     setSelectedStatus: Dispatch<SetStateAction<string>>;
     selectedPriority: string;
     setSelectedPriority: Dispatch<SetStateAction<string>>;
+    searchTerm: string;
+    setSearchTerm: Dispatch<SetStateAction<string>>;
 }
 
 export interface TaskFilterProps{
@@ -49,6 +51,8 @@ export interface TaskFilterProps{
     setSelectedPriority: Dispatch<SetStateAction<string>>;
     onStatusChange?: (taskId: string, newStatus: TaskStatus) => void;
     onPriorityChange?: (taskId: string, newPriority: string) => void;
+    searchTerm: string;
+    setSearchTerm: Dispatch<SetStateAction<string>>;
 }
 
 export interface TaskItemProps{
@@ -67,4 +71,5 @@ export interface TaskListProps{
     selectedPriority: string;
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
+    searchTerm: string;
 }

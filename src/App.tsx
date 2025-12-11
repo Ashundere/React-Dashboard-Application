@@ -15,7 +15,7 @@ function App() {
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [selectedPriority, setSelectedPriority] = useState<string>("All")
 
-  const [searchTerm, setSearchTerm] = useState<string>(" ")
+  const [searchTerm, setSearchTerm] = useState<string>("")
 
   const [darkMode, setDarkMode] = useState<boolean>(() =>{
       const mode = localStorage.getItem('darkMode')
@@ -44,6 +44,10 @@ function App() {
     darkMode? document.body.classList.add('dark-mode'): document.body.classList.remove('dark-mode')
   }, [darkMode])
 
+  useEffect(() => {
+    console.log("UseEffectSearch:", searchTerm)
+  }, [searchTerm])
+
   const addTask =(newTask: Task) =>{
     setTasks((prevTasks) => [...prevTasks, newTask])
   }
@@ -71,7 +75,9 @@ function App() {
       selectedStatus={selectedStatus}
       setSelectedStatus={setSelectedStatus}
       selectedPriority={selectedPriority}
-      setSelectedPriority={setSelectedPriority}/>
+      setSelectedPriority={setSelectedPriority}
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}/>
       <TaskForm
       addTask={addTask}/>
       <TaskList
@@ -81,6 +87,7 @@ function App() {
       selectedPriority={selectedPriority}
       onStatusChange={handleStatusChange}
       onDelete={handleDelete}
+      searchTerm={searchTerm}
       />
     </div>
     </>

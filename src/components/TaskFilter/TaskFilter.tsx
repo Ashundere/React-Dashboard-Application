@@ -3,7 +3,7 @@ import type { TaskFilterProps } from "../../types";
 
 
 
-export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setSelectedStatus, selectedPriority, setSelectedPriority})=>{
+export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setSelectedStatus, selectedPriority, setSelectedPriority, searchTerm, setSearchTerm})=>{
 
       const handleStatusFilterChange = (
         event: React.ChangeEvent<HTMLSelectElement>
@@ -16,6 +16,10 @@ export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setS
       ) => {
         setSelectedPriority((prevPriority)=> event.target.value)
       };
+
+       const handleSearchChange =(event: React.ChangeEvent<HTMLInputElement>) =>{
+        setSearchTerm(event.target.value.toLowerCase())
+       }
     return(
         <div className="filters">
             <div>
@@ -30,7 +34,7 @@ export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setS
                 <option value="Completed">Completed</option>
                 </select>
             </div>
-                        <div>
+            <div>
                 <label htmlFor="prioritySelect">Filter by Priority:</label>
                 <select
                 id="prioritySelect"
@@ -41,6 +45,16 @@ export const TaskFilter: React.FC<TaskFilterProps>=({tasks, selectedStatus, setS
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
                 </select>
+            </div>
+            <div>
+              <label htmlFor="searchBar">Search</label>
+              <input
+              type="text"
+              id="search"
+              name="search"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              />
             </div>
         </div>
     )
