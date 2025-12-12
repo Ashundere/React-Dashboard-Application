@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# React Task Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a task manager created using React and Typescript
 
-Currently, two official plugins are available:
+### Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This task manager app uses React and Typescript to display a series of tasks on the UI. It allows for changing of the task state and deletion of the task, as well as filtering by status and priority. There is also a search bar feature.
 
-## React Compiler
+## Getting Started
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Dependencies
+None!
 
-## Expanding the ESLint configuration
+### Authors
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Devon Jones
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Github: [@Ashundere](https://github.com/Ashundere)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Version History
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+0.1
+-Initial Release
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Acknowledgments
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+JS MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+W3Schools: https://www.w3schools.com/
+
+Typescript/React Cheatsheet: https://github.com/typescript-cheatsheets/react
+
+Canvas Lesson 9: React Fundamentals
+
+## Reflection
+
+I implemented React and Typescript features through the use of interfaces and prop handling. I struggled a lot with understanding prop drilling at first, but I got the hang of it as I continued working. I struggled to finish the amount of asks within the allotted time because I ended up having to do a lot of research and trial and error into getting form validation and the search bar to work. I also ended up having an error that would freeze my application anytime I tried to create a new task, but I figured out it was a bug regarding my dark mode filter that was causing the hang up. I fixed it quickly after figuring out the source. I approached component composition by creating interfaces of props that I guessed I would need to get the core functionality working. Then I built components around it. As I worked on state management, I came to realize I needed a lot more props than I had originally anticipated, and updated the components from there. I put most of my state management on the app itself, and had very little state management in the individual  components. 
