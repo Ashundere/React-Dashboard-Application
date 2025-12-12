@@ -34,14 +34,14 @@ const TaskForm: React.FC<TaskFormProps> = memo(({ addTask  }) => {
     }));
   };
 
-  const validationErrors: FormErrors = {}
+  const validationErrors: FormErrors = { title: "", description:"", dueDate:""}
 
     const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    
-
+       
     if(formData.title == ''){
       validationErrors.title= "Title is required"
+      
     }
     if(formData.description == ''){
       validationErrors.description = "Description is required"
@@ -49,17 +49,15 @@ const TaskForm: React.FC<TaskFormProps> = memo(({ addTask  }) => {
     if(formData.dueDate == ''){
       validationErrors.dueDate = "Due Date is required"
     }
-
     if (Object.keys(validationErrors).length > 0){
-      alert("Please fix validation errors!")
-      console.log(`Validation Errors: ${validationErrors}`)
+      alert(`Please fix validation errors! Current validation errors: ${validationErrors.title} ${validationErrors.description} ${validationErrors.dueDate}`)
+
     } else{
     const taskWithId: Task = {
         ...formData,
         id: `${objectCounterRef.current}`
     };
 
-    // Increment and store the *next* ID
     objectCounterRef.current++;
     localStorage.setItem('ObjectCounter', objectCounterRef.current.toString());
 
@@ -80,7 +78,6 @@ const TaskForm: React.FC<TaskFormProps> = memo(({ addTask  }) => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              required
             />
             {validationErrors.title && <span style={{ color: 'red' }}>{validationErrors.title}</span>}
           </div>

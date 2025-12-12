@@ -59,3 +59,8 @@
   background-color: black;
   color: white;
 }
+
+.title :focus:invalid{
+  border-style: solid;
+  border-color: red;
+}
