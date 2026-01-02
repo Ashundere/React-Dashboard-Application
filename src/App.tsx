@@ -5,7 +5,7 @@ import './App.css'
 import TaskForm from './components/TaskForm/TaskForm'
 import type { Task, TaskStatus } from './types'
 import { TaskList } from './components/TaskList/TaskList'
-import { TaskFilter } from './components/TaskFilter/TaskFilter'
+
 import { Dashboard } from './components/Dashboard/Dashboard'
 
 
